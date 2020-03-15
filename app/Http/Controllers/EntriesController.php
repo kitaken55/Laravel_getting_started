@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
+use App\Entry;
 
 class EntriesController extends Controller
 {
     //
     public function index() {
-        $entries = DB::select("SELECT * FROM entries");
-         var_dump($entries);
+        $entries = Entry::all();
+        foreach ($entries as $entry) {
+            var_dump($entry->title);
+            var_dump($entry->content);
+        }
     }
 }
